@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchDataFromApi } from "../utils/api";
 import { Endpoints, IMAGE_URL } from "../utils/Endpoints";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const HeroBanner = () => {
   const getBackgroundImage = () => {
@@ -9,7 +10,7 @@ const HeroBanner = () => {
         IMAGE_URL +
           res.data.results[Math.floor(Math.random() * 20)].backdrop_path
       )
-    );
+    ).catch((err) => console.log('Something Went Wrong!'))
   };
   useEffect(() => {
     getBackgroundImage();
@@ -43,7 +44,7 @@ const HeroBanner = () => {
 
       {/* Image changed dynamically */}
       {background && <div className="w-full h-full">
-        <img className="w-full h-full" src={background} alt="backdrop" />
+        <LazyLoadImage height={"100%"} width={"100%"} effect="opacity" className="w-full h-full" src={background} alt="backdrop" />
       </div>}
 
       {/* bottom opacity gradient  */}
