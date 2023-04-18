@@ -55,7 +55,7 @@ const Trending = () => {
           <SwitchTabs
             setActiveTab={setActiveTab}
             activeTab={activeTab}
-            data={["Day", "Week"]}
+            data={["day", "week"]}
           />
         </div>
       </div>
