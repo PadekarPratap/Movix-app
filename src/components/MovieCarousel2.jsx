@@ -7,15 +7,15 @@ import "react-multi-carousel/lib/styles.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import dayjs from "dayjs";
 
-const Trending = () => {
+const MovieCarousel2 = ({name, dataTab, endpoint}) => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
-  const getDayorWeek = () => {
-    return activeTab === 0 ? "day" : "week";
+  const dayOrWeekORTvOrMovie = () => {
+    return activeTab === 0 ? dataTab[0] : dataTab[1]
   };
   const getMovies = () => {
-    const dayOrWeek = getDayorWeek();
-    fetchDataFromApi(Endpoints.MOVIE_TRENDING + dayOrWeek).then((res) => {
+    const dayOrWeekORTvOrMovieVar = dayOrWeekORTvOrMovie();
+    fetchDataFromApi(dayOrWeekORTvOrMovieVar + endpoint).then((res) => {
       console.log(res);
       setTrendingMovies(res.data.results);
     });
@@ -49,13 +49,13 @@ const Trending = () => {
     <div className="max-w-[1200px] mx-auto px-5 my-[2rem]">
       <div className="text-white flex sm:justify-between sm:items-center flex-col sm:flex-row mb-[2.5rem]">
         <h2 className="text-3xl font-semibold font-mono mb-6 sm:mb-0">
-          Trending
+          {name}
         </h2>
         <div className="flex bg-slate-50 text-black px-2 py-1 gap-2 rounded-full self-start sm:self-stretch">
           <SwitchTabs
             setActiveTab={setActiveTab}
             activeTab={activeTab}
-            data={["day", "week"]}
+            data={dataTab}
           />
         </div>
       </div>
@@ -86,4 +86,4 @@ const Trending = () => {
   );
 };
 
-export default Trending;
+export default MovieCarousel2;
