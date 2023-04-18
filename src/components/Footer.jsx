@@ -21,24 +21,21 @@ const Footer = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur,
           asperiores sit. Odit excepturi, ullam ipsam distinctio corporis
           assumenda necessitatibus saepe atque voluptatem perferendis repellat
-          fugiat itaque laboriosam enim accusantium ipsa molestias fuga
-          voluptates est. Voluptatibus nihil dignissimos adipisci quos officia
-          obcaecati unde, ducimus ex eius minima. Assumenda perferendis sit rem.
         </div>
 
         {/* icons  */}
         <div className="flex flex-wrap items-center justify-center gap-[1.5rem]">
-          <div className="cursor-pointer h-[50px] w-[50px] bg-[#04152d] rounded-full flex items-center justify-center">
-            <FaFacebookSquare className="hover:text-[#da2f68]" size={25} />
+          <div className="cursor-pointer h-[50px] w-[50px] bg-[#04152d] rounded-full flex items-center justify-center  hover:icons-shadow hover:text-[#da2f68]">
+            <FaFacebookSquare size={25} />
           </div>
-          <div className="cursor-pointer h-[50px] w-[50px] bg-[#04152d] rounded-full flex items-center justify-center">
-            <AiFillInstagram className="hover:text-[#da2f68]" size={25} />
+          <div className="cursor-pointer h-[50px] w-[50px] bg-[#04152d] rounded-full flex items-center justify-center hover:icons-shadow hover:text-[#da2f68]">
+            <AiFillInstagram size={25} />
           </div>
-          <div className="cursor-pointer h-[50px] w-[50px] bg-[#04152d] rounded-full flex items-center justify-center">
-            <AiOutlineTwitter className="hover:text-[#da2f68]" size={25} />
+          <div className="cursor-pointer h-[50px] w-[50px] bg-[#04152d] rounded-full flex items-center justify-center hover:icons-shadow hover:text-[#da2f68]">
+            <AiOutlineTwitter size={25} />
           </div>
-          <div className="cursor-pointer h-[50px] w-[50px] bg-[#04152d] rounded-full flex items-center justify-center">
-            <GrLinkedin className="hover:text-[#da2f68]" size={20} />
+          <div className="cursor-pointer h-[50px] w-[50px] bg-[#04152d] rounded-full flex items-center justify-center hover:icons-shadow hover:text-[#da2f68]">
+            <GrLinkedin size={20} />
           </div>
         </div>
       </div>
