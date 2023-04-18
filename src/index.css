@@ -7,6 +7,9 @@
     .opacity-background{
         background: linear-gradient(180deg,rgba(4,21,45,0) 0%,#04152d 79.17%);
     }
+    .object-position-reset {
+        object-position: 50% 50%;
+    }
 }
 
 body{

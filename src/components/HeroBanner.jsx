@@ -23,7 +23,7 @@ const HeroBanner = () => {
       <div className="absolute inset-0 bg-[#04152d] opacity-60"></div>
 
       {/* overlay text on image  */}
-      <div className="absolute inset-0 text-white">
+      <div className="absolute inset-0 text-white px-5">
         <div className="text-center mt-[10rem]">
           <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold">Welcome.</h1>
           <p className="text-xl md:text-3xl">
