@@ -10,10 +10,19 @@
     .icons-shadow{
         box-shadow: 0 0 6px 3px #da2f68;
     }
+    .bg-grd{
+        background: linear-gradient(98.37deg, #f89e00 .99%, #da2f68 100%);
+    }
+
 }
 
 body{
     background-color: #04152d;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar{
+    display: none;
 }
 
 
