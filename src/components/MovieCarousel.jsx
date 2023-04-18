@@ -6,6 +6,9 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import dayjs from "dayjs";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
 
 const MovieCarousel = ({name, dataTab}) => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -71,10 +74,15 @@ const MovieCarousel = ({name, dataTab}) => {
           const posterURL = IMAGE_URL + movie.poster_path;
           return (
             <div key={movie.id}>
-              <div>
+              <div className="relative">
                 <LazyLoadImage effect="opacity" className="rounded-lg" src={posterURL} />
+                <div className="w-[50px] h-[50px] absolute bottom-[-10px] left-[20px]">
+                  <CircularProgressbar className="bg-white rounded-full p-[3px]" styles={buildStyles({
+                    textSize: '35px'
+                  })} value={movie.vote_average.toFixed(1)} maxValue={10} text={movie.vote_average.toFixed(1)} />
+                </div>
               </div>
-              <div className="text-center">
+              <div className="text-center mt-5">
                 <span className="text-white block">{movie.title || movie.name}</span>
                 <span className="block text-slate-500">{dayjs(movie.release_date).format("MMM D, YYYY")}</span>
               </div>
