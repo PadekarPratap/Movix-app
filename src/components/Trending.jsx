@@ -46,7 +46,7 @@ const Trending = () => {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto px-5 my-[5rem]">
+    <div className="max-w-[1200px] mx-auto px-5 my-[2rem]">
       <div className="text-white flex sm:justify-between sm:items-center flex-col sm:flex-row mb-[2.5rem]">
         <h2 className="text-3xl font-semibold font-mono mb-6 sm:mb-0">
           Trending
