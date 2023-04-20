@@ -2,6 +2,7 @@ import React from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Carousel from 'react-multi-carousel'
 import { IMAGE_URL } from '../utils/Endpoints';
+import avatar from '../assets/avatar.png'
 
 const Cast = ({cast}) => {
 
@@ -41,7 +42,7 @@ const Cast = ({cast}) => {
                 {cast?.map((castMember) => (
                     <div key={crypto.randomUUID()}>
                         <div>
-                            <LazyLoadImage className='rounded-full mx-auto w-[180px] h-[180px]' src={IMAGE_URL + castMember.profile_path} />
+                            <LazyLoadImage className='rounded-full mx-auto w-[180px] h-[180px]' src={castMember.profile_path ? IMAGE_URL + castMember.profile_path : avatar} />
                         </div>
                         <div>
                             <h6 className='text-white text-center'>{castMember.name || castMember.original_name}</h6>

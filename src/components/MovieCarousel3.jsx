@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import SwitchTabs from "./SwitchTabs";
-import { fetchDataFromApi } from "../utils/api";
-import { Endpoints, IMAGE_URL } from "../utils/Endpoints";
+import React from "react";
+import { IMAGE_URL } from "../utils/Endpoints";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -9,8 +7,8 @@ import dayjs from "dayjs";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Genres from "./Genres";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
+import NoPoster from '../assets/no-poster.png'
 const MovieCarousel3 = ({ name, moviesData }) => {
   const navigate = useNavigate()
 //   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -26,6 +24,7 @@ const MovieCarousel3 = ({ name, moviesData }) => {
 //     getMovies();
 //   }, [activeTab]);
 
+    const {mediaType}  = useParams()
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -64,12 +63,12 @@ const MovieCarousel3 = ({ name, moviesData }) => {
         {moviesData.map((movie) => {
           const posterURL = IMAGE_URL + movie.poster_path;
           return (
-            <div key={movie.id} className="cursor-pointer" onClick={() => navigate(`/${dayOrWeekORTvOrMovie()}/${movie.id}`)}>
+            <div key={movie.id} className="cursor-pointer" onClick={() => navigate(`/${mediaType}/${movie.id}`)}>
               <div className="relative">
                 <LazyLoadImage
                   effect="opacity"
                   className="rounded-lg"
-                  src={posterURL}
+                  src={movie.poster_path ? posterURL : NoPoster}
                 />
                 <div className="w-[50px] h-[50px] absolute bottom-[-10px] left-[20px]">
                   <CircularProgressbar

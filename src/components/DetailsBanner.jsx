@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { IMAGE_URL } from "../utils/Endpoints";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import NoPosterImg from '../assets/no-poster.png'
 
 const DetailsBanner = ({director, mediaDetails}) => {
   return (
@@ -20,7 +21,7 @@ const DetailsBanner = ({director, mediaDetails}) => {
           <LazyLoadImage
             width={350}
             height={300}
-            src={IMAGE_URL + mediaDetails?.poster_path}
+            src={mediaDetails?.poster_path ? IMAGE_URL + mediaDetails?.poster_path : NoPosterImg}
             alt=""
             className="rounded-lg mx-auto"
           />

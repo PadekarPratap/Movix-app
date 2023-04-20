@@ -10,6 +10,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Genres from "./Genres";
 import { useNavigate } from "react-router-dom";
+import NoPoster from '../assets/no-poster.png'
 
 const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
   const navigate = useNavigate()
@@ -80,7 +81,7 @@ const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
                 <LazyLoadImage
                   effect="opacity"
                   className="rounded-lg"
-                  src={posterURL}
+                  src={movie.poster_path ? posterURL : NoPoster}
                 />
                 <div className="w-[50px] h-[50px] absolute bottom-[-10px] left-[20px]">
                   <CircularProgressbar
