@@ -3,9 +3,11 @@ import MovixLogo from '../assets/movix-logo.svg'
 import {GoSearch} from 'react-icons/go'
 import {SlMenu} from 'react-icons/sl'
 import {HiOutlineXMark} from 'react-icons/hi2'
+import { useNavigate } from 'react-router-dom'
 
 
 const Header = () => {
+  const navigate = useNavigate()
   const [isNavOpen, setIsNavOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const handleNav = () => {
@@ -31,7 +33,7 @@ const Header = () => {
           <div className='flex items-center justify-between h-full text-white'>
               
               {/* logo  */}
-              <div>
+              <div onClick={() => navigate('/')} className='cursor-pointer'>
                 <img src={MovixLogo} alt="Logo" />
               </div>
 
