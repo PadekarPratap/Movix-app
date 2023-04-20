@@ -30,7 +30,7 @@ const Home = () => {
           return allGenre[eachGen.id] = eachGen.name
         })
       })
-      console.log(allGenre)
+      // console.log(allGenre)
       dispatch(getGenresConfig(allGenre))
   }
   

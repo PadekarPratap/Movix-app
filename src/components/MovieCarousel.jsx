@@ -9,8 +9,10 @@ import dayjs from "dayjs";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Genres from "./Genres";
+import { useNavigate } from "react-router-dom";
 
 const MovieCarousel = ({ name, dataTab }) => {
+  const navigate = useNavigate()
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const dayOrWeekORTvOrMovie = () => {
@@ -75,7 +77,7 @@ const MovieCarousel = ({ name, dataTab }) => {
         {trendingMovies.map((movie) => {
           const posterURL = IMAGE_URL + movie.poster_path;
           return (
-            <div key={movie.id}>
+            <div key={movie.id} className="cursor-pointer" onClick={() => navigate(`/${movie.media_type}/${movie.id}`)}>
               <div className="relative">
                 <LazyLoadImage
                   effect="opacity"

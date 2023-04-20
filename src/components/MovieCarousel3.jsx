@@ -11,24 +11,20 @@ import "react-circular-progressbar/dist/styles.css";
 import Genres from "./Genres";
 import { useNavigate } from "react-router-dom";
 
-const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
+const MovieCarousel3 = ({ name, moviesData }) => {
   const navigate = useNavigate()
-  const [trendingMovies, setTrendingMovies] = useState([]);
-  const [activeTab, setActiveTab] = useState(0);
-  const dayOrWeekORTvOrMovie = () => {
-    return activeTab === 0 ? dataTab[0] : dataTab[1];
-  };
-  const getMovies = () => {
-    const dayOrWeekORTvOrMovieVar = dayOrWeekORTvOrMovie();
-    fetchDataFromApi(dayOrWeekORTvOrMovieVar + endpoint).then((res) => {
-      // console.log(res);
-      setTrendingMovies(res.data.results);
-    });
-  };
+//   const [trendingMovies, setTrendingMovies] = useState([]);
+//   const getMovies = () => {
+//     const dayOrWeekORTvOrMovieVar = dayOrWeekORTvOrMovie();
+//     fetchDataFromApi(dayOrWeekORTvOrMovieVar + endpoint).then((res) => {
+//       // console.log(res);
+//       setTrendingMovies(res.data.results);
+//     });
+//   };
 
-  useEffect(() => {
-    getMovies();
-  }, [activeTab]);
+//   useEffect(() => {
+//     getMovies();
+//   }, [activeTab]);
 
   const responsive = {
     superLargeDesktop: {
@@ -56,13 +52,6 @@ const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
         <h2 className="text-3xl font-semibold font-mono mb-6 sm:mb-0">
           {name}
         </h2>
-        <div className="flex bg-slate-50 text-black px-2 py-1 gap-2 rounded-full self-start sm:self-stretch">
-          <SwitchTabs
-            setActiveTab={setActiveTab}
-            activeTab={activeTab}
-            data={dataTab}
-          />
-        </div>
       </div>
       <Carousel
         responsive={responsive}
@@ -72,7 +61,7 @@ const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
         itemClass="carousel-item-padding-40-px"
         slidesToSlide={2}
       >
-        {trendingMovies.map((movie) => {
+        {moviesData.map((movie) => {
           const posterURL = IMAGE_URL + movie.poster_path;
           return (
             <div key={movie.id} className="cursor-pointer" onClick={() => navigate(`/${dayOrWeekORTvOrMovie()}/${movie.id}`)}>
@@ -117,4 +106,4 @@ const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
   );
 };
 
-export default MovieCarousel2;
+export default MovieCarousel3;

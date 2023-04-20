@@ -16,7 +16,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<Details />} />
+        <Route path="/:mediaType/:id" element={<Details />} />
         <Route path="/" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
