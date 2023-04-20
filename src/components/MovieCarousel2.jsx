@@ -6,17 +6,20 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import dayjs from "dayjs";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import Genres from "./Genres";
 
-const MovieCarousel2 = ({name, dataTab, endpoint}) => {
+const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const dayOrWeekORTvOrMovie = () => {
-    return activeTab === 0 ? dataTab[0] : dataTab[1]
+    return activeTab === 0 ? dataTab[0] : dataTab[1];
   };
   const getMovies = () => {
     const dayOrWeekORTvOrMovieVar = dayOrWeekORTvOrMovie();
     fetchDataFromApi(dayOrWeekORTvOrMovieVar + endpoint).then((res) => {
-      console.log(res);
+      // console.log(res);
       setTrendingMovies(res.data.results);
     });
   };
@@ -29,7 +32,7 @@ const MovieCarousel2 = ({name, dataTab, endpoint}) => {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 1024 },
-      items: 5,
+      items: 4,
     },
     desktop: {
       breakpoint: { max: 1024, min: 768 },
@@ -71,12 +74,38 @@ const MovieCarousel2 = ({name, dataTab, endpoint}) => {
           const posterURL = IMAGE_URL + movie.poster_path;
           return (
             <div key={movie.id}>
-              <div>
-                <LazyLoadImage effect="opacity" className="rounded-lg" src={posterURL} />
+              <div className="relative">
+                <LazyLoadImage
+                  effect="opacity"
+                  className="rounded-lg"
+                  src={posterURL}
+                />
+                <div className="w-[50px] h-[50px] absolute bottom-[-10px] left-[20px]">
+                  <CircularProgressbar
+                    className="bg-white rounded-full p-[3px]"
+                    styles={buildStyles({
+                      textSize: "35px",
+                      pathColor:
+                        movie.vote_average < 5
+                          ? "red"
+                          : movie.vote_average < 7
+                          ? "orange"
+                          : "green",
+                    })}
+                    value={movie.vote_average.toFixed(1)}
+                    maxValue={10}
+                    text={movie.vote_average.toFixed(1)}
+                  />
+                </div>
+                <Genres genData={movie.genre_ids.slice(0, 2)} style={'flex flex-col items-end bottom-[27px] right-[10px]'} />
               </div>
-              <div className="text-center">
-                <span className="text-white block">{movie.title || movie.name}</span>
-                <span className="block text-slate-500">{dayjs(movie.release_date).format("MMM D, YYYY")}</span>
+              <div className="text-center mt-5">
+                <span className="text-white block">
+                  {movie.title || movie.name}
+                </span>
+                <span className="block text-slate-500">
+                  {dayjs(movie.release_date).format("MMM D, YYYY")}
+                </span>
               </div>
             </div>
           );
