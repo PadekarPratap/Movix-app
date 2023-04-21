@@ -21,31 +21,36 @@ const Explore = () => {
     .then((res) => setGenre(res.data.genres))
   }
 
+  // start from here using the get discover endpoint :)
+
   const Options = () =>{
-    const SelectOptions = genre.map((gen) => {
+    const opts = genre.map((gen) => {
       const newOption = {}
       newOption['label'] = gen.name
       newOption['value'] = gen.id
       return newOption
     })
-    return SelectOptions
+    return opts
   }
+
+   
 
   useEffect(() =>{
     getMovieOrTvGenre()
-    Options()
   }, [])
   // console.log(selectedOption)
   return (
     <div className='w-full min-h-[100vh]'>
       <div className='max-w-[1200px] mx-auto px-5 mt-[8rem]'>
-        <div>
+        <div className='flex justify-between flex-col sm:flex-row gap-8 sm:gap-0'>
             <h1 className='text-white text-3xl'>Explore {media_type === "movie" ? 'Movies' : 'TV Shows'}</h1>
             <div>
               <Select 
+              placeholder='Select a genre'
               isMulti
               defaultValue={selectedOption}
               options={Options()}
+              isSearchable
               onChange={setSelectedOption}
               />
             </div>
