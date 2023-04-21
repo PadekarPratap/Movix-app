@@ -63,7 +63,10 @@ const MovieCarousel3 = ({ name, moviesData }) => {
         {moviesData.map((movie) => {
           const posterURL = IMAGE_URL + movie.poster_path;
           return (
-            <div key={movie.id} className="cursor-pointer" onClick={() => navigate(`/${mediaType}/${movie.id}`)}>
+            <div key={movie.id} className="cursor-pointer" onClick={() => {
+              navigate(`/${mediaType}/${movie.id}`)
+              window.scrollTo(0, 0)
+              }}>
               <div className="relative">
                 <LazyLoadImage
                   effect="opacity"

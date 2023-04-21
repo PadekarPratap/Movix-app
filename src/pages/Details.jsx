@@ -49,7 +49,6 @@ const Details = () => {
     getCrewDetaisl()
     getSimilar()
     getRecommendations()
-    window.scrollTo(0, 0)
   }, [mediaType, id]);
   return (
     <>
