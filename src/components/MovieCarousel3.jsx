@@ -95,7 +95,7 @@ const MovieCarousel3 = ({ name, moviesData }) => {
                     text={movie.vote_average.toFixed(1)}
                   />
                 </div>
-                <Genres genData={movie.genre_ids.slice(0, 2)} style={'bottom-[27px] hidden xl:flex right-[-120px] flex flex-col items-end'} />
+                <Genres genData={movie.genre_ids.slice(0, 2)} style={'bottom-[27px] hidden xl:flex right-[25px] flex flex-col items-end'} />
               </div>
               <div className="text-center mt-5">
                 <span className="text-white block">
