@@ -60,7 +60,7 @@ const DetailsBanner = ({director, mediaDetails}) => {
           </div>
           <div>
             <h3 className="uppercase text-2xl text-white my-3">Overview</h3>
-            <p className="text-white text-lg font-inter pr-[5rem]">{mediaDetails?.overview}</p>
+            <p className="text-white text-lg font-inter md:pr-[5rem]">{mediaDetails?.overview}</p>
           </div>
           <div className="mt-2 py-3 border-b border-gray-500">
             {/* status etc  */}

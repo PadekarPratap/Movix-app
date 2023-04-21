@@ -28,7 +28,7 @@ const Header = () => {
   }
   return (
     <>
-    <div className='nav w-full h-[60px] fixed top-0 left-0 z-10 bg-black/20 duration-500 backdrop-blur-sm' style={{background: isNavOpen && '#04152d'}}>
+    <div className='nav w-full h-[60px] fixed top-0 left-0 z-[999] bg-black/20 duration-500 backdrop-blur-sm' style={{background: isNavOpen && '#04152d'}}>
       <div className='container mx-auto px-5 h-full'>
           <div className='flex items-center justify-between h-full text-white'>
               
@@ -56,7 +56,7 @@ const Header = () => {
     </div>
 
     {/* mobile nav  */}
-    <div className={isNavOpen ? 'bg-[#020c1b] p-5 text-white fixed top-[60px] z-10 left-0 right-0 duration-500' : 'fixed top-[-100%]'}>
+    <div className={isNavOpen ? 'bg-[#020c1b] p-5 text-white fixed top-[60px] z-[999] left-0 right-0 duration-500' : 'fixed top-[-100%]'}>
       <ul className='flex flex-col space-y-7'>
         <li className='text-xl cursor-pointer hover:text-[#da2f68]'>Movies</li>
         <li className='text-xl cursor-pointer hover:text-[#da2f68]'>TV Shows</li>
@@ -64,7 +64,7 @@ const Header = () => {
     </div>
 
     {/* search  */}
-    <div className={isSearchOpen ? 'bg-white fixed h-[80px] top-[60px] z-10 left-0 right-0 duration-500' : 'fixed top-[-100%]'}>
+    <div className={isSearchOpen ? 'bg-white fixed h-[80px] top-[60px] z-[999] left-0 right-0 duration-500' : 'fixed top-[-100%]'}>
       <div className='flex items-center h-full w-full justify-center'>
       <input type="text" placeholder='Search for a movie or a TV Show' className='w-3/4 text-lg focus:outline-none focus:border-none' />
       <HiOutlineXMark onClick={handleSearch} className='inline cursor-pointer' size={30} />
