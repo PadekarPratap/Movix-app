@@ -56,7 +56,7 @@ const SearchResults = () => {
       {data.length ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {data.map((movie) => (
-            <MovieCard key={crypto.randomUUID()} movie={movie} />
+            <MovieCard key={crypto.randomUUID()} movie={movie} media={movie.media_type} />
           ))}
         </div>
       ) : (

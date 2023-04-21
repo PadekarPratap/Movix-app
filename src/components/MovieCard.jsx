@@ -6,13 +6,13 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({movie, media}) => {
 
     const navigate = useNavigate()
 
   return (
     <div role='button' className='cursor-pointer' onClick={() => {
-        navigate(`/${movie.media_type}/${movie.id}`)
+        navigate(`/${media}/${movie.id}`)
         window.scrollTo(0,0)
         }}>
         <div>
