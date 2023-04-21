@@ -11,6 +11,8 @@ import "react-circular-progressbar/dist/styles.css";
 import Genres from "./Genres";
 import { useNavigate } from "react-router-dom";
 import NoPoster from '../assets/no-poster.png'
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 
 const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
   const navigate = useNavigate()
@@ -39,7 +41,7 @@ const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
     },
     desktop: {
       breakpoint: { max: 1024, min: 768 },
-      items: 4,
+      items: 3,
     },
     tablet: {
       breakpoint: { max: 768, min: 464 },
@@ -79,11 +81,13 @@ const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
             <div key={movie.id} className="cursor-pointer" onClick={() => navigate(`/${dayOrWeekORTvOrMovie()}/${movie.id}`)}>
               <div className="relative">
                 <LazyLoadImage
-                  effect="opacity"
-                  className="rounded-lg"
+                  effect="blur"
+                  width={'100%'}
+                  height={'100%'}
+                  className="rounded-lg h-[400px] w-[250px] mx-auto"
                   src={movie.poster_path ? posterURL : NoPoster}
                 />
-                <div className="w-[50px] h-[50px] absolute bottom-[-10px] left-[20px]">
+                <div className="w-[50px] h-[50px] absolute bottom-[-10px] left-[50px] xl:left-[20px]">
                   <CircularProgressbar
                     className="bg-white rounded-full p-[3px]"
                     styles={buildStyles({
@@ -100,7 +104,7 @@ const MovieCarousel2 = ({ name, dataTab, endpoint }) => {
                     text={movie.vote_average.toFixed(1)}
                   />
                 </div>
-                <Genres genData={movie.genre_ids.slice(0, 2)} style={'flex flex-col items-end bottom-[27px] right-[10px]'} />
+                <Genres genData={movie.genre_ids.slice(0, 2)} style={'bottom-[27px] hidden xl:flex right-[-180px] flex flex-col items-end'} />
               </div>
               <div className="text-center mt-5">
                 <span className="text-white block">

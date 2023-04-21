@@ -9,6 +9,9 @@ import "react-circular-progressbar/dist/styles.css";
 import Genres from "./Genres";
 import { useNavigate, useParams } from "react-router-dom";
 import NoPoster from '../assets/no-poster.png'
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+
 const MovieCarousel3 = ({ name, moviesData }) => {
   const navigate = useNavigate()
 //   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -69,11 +72,13 @@ const MovieCarousel3 = ({ name, moviesData }) => {
               }}>
               <div className="relative">
                 <LazyLoadImage
-                  effect="opacity"
-                  className="rounded-lg"
+                  effect="blur"
+                  width={'100%'}
+                  height={'100%'}
+                  className="rounded-lg h-[400px] w-[250px] mx-auto"
                   src={movie.poster_path ? posterURL : NoPoster}
                 />
-                <div className="w-[50px] h-[50px] absolute bottom-[-10px] left-[20px]">
+                <div className="w-[50px] h-[50px] absolute bottom-[-10px] left-[50px] xl:left-[20px]">
                   <CircularProgressbar
                     className="bg-white rounded-full p-[3px]"
                     styles={buildStyles({
@@ -90,7 +95,7 @@ const MovieCarousel3 = ({ name, moviesData }) => {
                     text={movie.vote_average.toFixed(1)}
                   />
                 </div>
-                <Genres genData={movie.genre_ids.slice(0, 2)} style={'flex flex-col items-end bottom-[27px] right-[10px]'} />
+                <Genres genData={movie.genre_ids.slice(0, 2)} style={'bottom-[27px] hidden xl:flex right-[-120px] flex flex-col items-end'} />
               </div>
               <div className="text-center mt-5">
                 <span className="text-white block">
