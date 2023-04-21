@@ -5,6 +5,7 @@ import Explore from "./pages/Explore"
 import PageNotFound from "./pages/PageNotFound"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
+import SearchResults from "./pages/SearchResults"
 
 
 
@@ -17,7 +18,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:mediaType/:id" element={<Details />} />
-        <Route path="/" element={<Explore />} />
+        <Route path="/search/:query" element={<SearchResults />} />
+        <Route path="/explore/:media_type" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

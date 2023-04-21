@@ -2,8 +2,16 @@ import React, { useEffect, useState } from "react";
 import { fetchDataFromApi } from "../utils/api";
 import { Endpoints, IMAGE_URL } from "../utils/Endpoints";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useNavigate } from "react-router-dom";
 
 const HeroBanner = () => {
+  const [query, setQuery] = useState('')
+  const navigate = useNavigate()
+  const handleQuery = (e) => {
+    if(e.key === "Enter" && query){
+      navigate(`/search/${query}`)
+    }
+  }
   const getBackgroundImage = () => {
     fetchDataFromApi(Endpoints.MOVIE_UPCOMING).then((res) =>
       setBackground(
@@ -31,11 +39,14 @@ const HeroBanner = () => {
           </p>
           <div className="mt-[2rem] max-w-[1000px] mx-auto">
             <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyUp={handleQuery}
               type="text"
               placeholder="Search for a Movie or a TV Show..."
               className="text-xl md:text-2xl px-8 py-3 text-black w-2/3 rounded-l-full focus:border-none focus:outline-none"
             />
-            <button className="bg-gradient-to-r from-[#f89e00] to-[#da2f68] px-4 py-3 rounded-r-full text-xl md:text-2xl">
+            <button onClick={() => query && navigate(`/search/${query}`)} className="bg-gradient-to-r from-[#f89e00] to-[#da2f68] px-4 py-3 rounded-r-full text-xl md:text-2xl">
               Search
             </button>
           </div>

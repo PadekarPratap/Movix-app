@@ -3,11 +3,20 @@ import MovixLogo from '../assets/movix-logo.svg'
 import {GoSearch} from 'react-icons/go'
 import {SlMenu} from 'react-icons/sl'
 import {HiOutlineXMark} from 'react-icons/hi2'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 
 const Header = () => {
   const navigate = useNavigate()
+  const [query, setQuery] = useState('')
+
+  const handleQuery = (e) => {
+    if(e.key === "Enter" && query){
+      navigate(`/search/${query}`)
+      handleSearch()
+    }
+  }
+
   const [isNavOpen, setIsNavOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const handleNav = () => {
@@ -40,8 +49,8 @@ const Header = () => {
               {/* right section  */}
               <div className='hidden sm:block'>
                 <ul className='flex items-center gap-8'>
-                  <li className='text-lg cursor-pointer hover:text-[#da2f68]'>Movies</li>
-                  <li className='text-lg cursor-pointer hover:text-[#da2f68]'>TV Shows</li>
+                  <li className='text-lg cursor-pointer hover:text-[#da2f68]'><NavLink to={"/explore/movie"}>Movies</NavLink></li>
+                  <li className='text-lg cursor-pointer hover:text-[#da2f68]'><NavLink to={"/explore/tv"}>TV Shows</NavLink></li>
                   <li role='button' onClick={handleSearch} className='text-lg cursor-pointer hover:text-[#da2f68]'><GoSearch /></li>
                 </ul>
               </div>
@@ -66,7 +75,7 @@ const Header = () => {
     {/* search  */}
     <div className={isSearchOpen ? 'bg-white fixed h-[80px] top-[60px] z-[999] left-0 right-0 duration-500' : 'fixed top-[-100%]'}>
       <div className='flex items-center h-full w-full justify-center'>
-      <input type="text" placeholder='Search for a movie or a TV Show' className='w-3/4 text-lg focus:outline-none focus:border-none' />
+      <input value={query} onChange={(e) => setQuery(e.target.value)} onKeyUp={handleQuery} type="text" placeholder='Search for a movie or a TV Show' className='w-3/4 text-lg focus:outline-none focus:border-none' />
       <HiOutlineXMark onClick={handleSearch} className='inline cursor-pointer' size={30} />
       </div>
     </div>
