@@ -67,8 +67,8 @@ const Header = () => {
     {/* mobile nav  */}
     <div className={isNavOpen ? 'bg-[#020c1b] p-5 text-white fixed top-[60px] z-[999] left-0 right-0 duration-500' : 'fixed top-[-100%]'}>
       <ul className='flex flex-col space-y-7'>
-        <li className='text-xl cursor-pointer hover:text-[#da2f68]'><NavLink to={"/explore/movie"}>Movies</NavLink></li>
-        <li className='text-xl cursor-pointer hover:text-[#da2f68]'><NavLink to={"/explore/tv"}>TV Shows</NavLink></li>
+      <NavLink to={"/explore/movie"}><li className='text-xl cursor-pointer hover:text-[#da2f68]'>Movies</li></NavLink>
+      <NavLink to={"/explore/tv"}><li className='text-xl cursor-pointer hover:text-[#da2f68]'>TV Shows</li></NavLink>
       </ul>
     </div>
 

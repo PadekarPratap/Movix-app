@@ -4,8 +4,9 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { IMAGE_URL } from "../utils/Endpoints";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import NoPosterImg from '../assets/no-poster.png'
+import {BsFillPlayCircleFill} from 'react-icons/bs'
 
-const DetailsBanner = ({director, mediaDetails}) => {
+const DetailsBanner = ({director, mediaDetails, video}) => {
   return (
     <div
     className="w-full min-h-[90vh] relative"
@@ -16,7 +17,7 @@ const DetailsBanner = ({director, mediaDetails}) => {
 
     {/* overlay Text  */}
     <div className="max-w-[1200px] mx-auto px-5 h-full pt-[5rem] relative z-30">
-      <div className="grid md:grid-cols-2 pb-[10%]">
+      <div className="grid md:grid-cols-2 pb-[10%] gap-[2rem] md:gap-0">
         <div>
           <LazyLoadImage
             width={350}
@@ -26,20 +27,20 @@ const DetailsBanner = ({director, mediaDetails}) => {
             className="rounded-lg mx-auto"
           />
         </div>
-        <div>
+        <div className='text-center md:text-left'>
           <h1 className="text-2xl md:text-4xl text-white">
             {mediaDetails?.original_title || mediaDetails?.title} (
             {dayjs(mediaDetails?.release_date).format("YYYY")})
           </h1>
           <h6 className="text-xl text-gray-400">{mediaDetails?.tagline}</h6>
-          <div className="flex gap-3 mt-4">
+          <div className="flex gap-3 mt-4 justify-center md:justify-start">
             {mediaDetails?.genres.map((genre) => (
               <p key={crypto.randomUUID()} className="bg-[#da2f68] text-white px-[5px] py-[3px] text-[12px] rounded">
                 {genre.name}
               </p>
             ))}
           </div>
-          <div className="mt-5">
+          <div className="mt-5 flex items-center gap-[2rem] justify-center md:justify-start">
             <div className="w-[80px] h-[80px]">
               <CircularProgressbar
                 maxValue={10}
@@ -56,6 +57,9 @@ const DetailsBanner = ({director, mediaDetails}) => {
                       : "orange",
                 })}
               />
+            </div>
+            <div>
+              <button onClick={() => window.open(`https://www.youtube.com/watch?v=${video.key}`)} className='bg-grd text-white px-4 py-2 flex items-center gap-2 rounded-sm'><BsFillPlayCircleFill />Watch Trailer</button>
             </div>
           </div>
           <div>

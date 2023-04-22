@@ -16,6 +16,8 @@ const Details = () => {
   const [cast, setCast] = useState([])
   const [similarMovies, setSimilarMovies] = useState([])
   const [recommendations, setRecommendations] = useState([])
+  const [video, setVideo] = useState({})
+
   const headers = {
     Authorization: `Bearer ${import.meta.env.VITE_APP_API_TOKEN}`,
   };
@@ -44,15 +46,23 @@ const Details = () => {
     setRecommendations(res.data.results)
   }
 
+  const getVideos = async () =>{
+    const res = await axios.get(BASE_URL + mediaType + '/' + id + '/videos', {headers})
+    res.data.results.map((eachRes) =>{
+      return eachRes.type === "Trailer" ? setVideo(eachRes) : null
+    })
+  }
+
   useEffect(() => {
     getMediaDetails();
     getCrewDetaisl()
     getSimilar()
     getRecommendations()
+    getVideos()
   }, [mediaType, id]);
   return (
     <>
-      <DetailsBanner mediaDetails={mediaDetails} director={director} />
+      <DetailsBanner mediaDetails={mediaDetails} director={director} video={video} />
       <Cast cast={cast} />
       <MovieCarousel3 name={'Similar Movies'} moviesData={similarMovies} />
       <MovieCarousel3 name={'Recommendations'} moviesData={recommendations} />
