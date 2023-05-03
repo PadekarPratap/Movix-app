@@ -6,6 +6,7 @@ import PageNotFound from "./pages/PageNotFound"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import SearchResults from "./pages/SearchResults"
+import ScrollToTop from "./components/ScrollToTop"
 
 
 
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <div>
       <Header />
+      <ScrollToTop>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:mediaType/:id" element={<Details />} />
@@ -22,6 +24,7 @@ const App = () => {
         <Route path="/explore/:media_type" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      </ScrollToTop>
       <Footer />
     </div>
   )

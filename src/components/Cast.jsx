@@ -40,7 +40,7 @@ const Cast = ({cast}) => {
                 slidesToSlide={2}
             >
                 {cast?.map((castMember) => (
-                    <div key={crypto.randomUUID()}>
+                    <div key={castMember.id}>
                         <div>
                             <LazyLoadImage className='rounded-full mx-auto w-[180px] h-[180px]' src={castMember.profile_path ? IMAGE_URL + castMember.profile_path : avatar} />
                         </div>

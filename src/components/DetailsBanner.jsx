@@ -35,7 +35,7 @@ const DetailsBanner = ({director, mediaDetails, video}) => {
           <h6 className="text-xl text-gray-400">{mediaDetails?.tagline}</h6>
           <div className="flex gap-3 mt-4 justify-center md:justify-start">
             {mediaDetails?.genres.map((genre) => (
-              <p key={crypto.randomUUID()} className="bg-[#da2f68] text-white px-[5px] py-[3px] text-[12px] rounded">
+              <p key={genre.name} className="bg-[#da2f68] text-white px-[5px] py-[3px] text-[12px] rounded">
                 {genre.name}
               </p>
             ))}

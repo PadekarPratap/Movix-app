@@ -11,10 +11,7 @@ const MovieCard = ({movie, media}) => {
     const navigate = useNavigate()
 
   return (
-    <div role='button' className='cursor-pointer' onClick={() => {
-        navigate(`/${media}/${movie.id}`)
-        window.scrollTo(0,0)
-        }}>
+    <div role='button' className='cursor-pointer' onClick={() => navigate(`/${media}/${movie.id}`)}>
         <div className='w-[250px] h-[350px] mx-auto lg:mx-0'>
             <LazyLoadImage effect='blur' className='rounded-lg w-full h-full'  width={'250px'} height={'350px'} src={movie.poster_path ? IMAGE_URL + movie.poster_path : PosterFallBack} />
         </div>
